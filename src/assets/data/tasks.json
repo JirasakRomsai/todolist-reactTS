@@ -1,0 +1,13 @@
+{
+    "todo": {
+        "itemList": [
+            {
+                "title": "",
+                "description": ""
+            }
+        ],
+        "sum": 0
+    },
+    "inprogress": {},
+    "done": {}
+}

@@ -1,0 +1,19 @@
+.taskNew {}
+
+
+.inputDesc {
+    overflow: hidden;
+    resize: none;
+    height: 500px;
+    width: 100%;
+}
+
+.inputTitle {
+    display: flex;
+}
+
+.inputTitle>input {
+    overflow: hidden;
+    resize: none;
+    width: 80%;
+}
