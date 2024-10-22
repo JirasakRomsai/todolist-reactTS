@@ -1,11 +1,12 @@
 import { FC } from 'react';
-import Card from '../../components/Todo/Card/Card';
+import Todos from '../../components/Todos/Index';
 
 const IndexTodoPage: FC = () => {
 
     return (
         <>
-            <Card />
+            {/* <Card /> */}
+            <Todos />
         </>
     )
 }

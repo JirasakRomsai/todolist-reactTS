@@ -4,10 +4,10 @@ import Button from "../UI/Button";
 
 const Item: FC = () => {
     return (
-        <div className={classes.Item}>
+        <div className={classes.item}>
             <p>title</p>
-            <div>
-                <Button>edit</Button>
+            <div className={classes.action}>
+                <Button classes="mr-2">edit</Button>
                 <Button>remove</Button>
             </div>
         </div>

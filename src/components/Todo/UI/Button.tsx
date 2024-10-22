@@ -4,9 +4,9 @@ interface ButtonProps {
     children: ReactNode,
     classes?: string;
 }
-const Button: FC<ButtonProps> = ({ children, classes }) => {
+const Button: FC<ButtonProps> = ({ children, classes, ...props }) => {
     return (
-        <button className={classes}>
+        <button className={classes} {...props}>
             {children}
         </button>
     )

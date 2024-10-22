@@ -10,7 +10,7 @@ const Card: FC = () => {
         <div className={`${classes.card}`}>
             {/* s */}
             {/* <TaskNew /> */}
-            <List />
+            {/* <List /> */}
         </div>
     )
 }
