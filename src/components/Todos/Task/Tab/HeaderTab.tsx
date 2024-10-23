@@ -1,21 +1,23 @@
-import { FC, useState } from "react";
-import { Box, Tab } from '@mui/material';
-import { TabList } from '@mui/lab';
+// HeaderTabs.tsx
+import * as React from 'react';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
-const HeaderListTask: FC = () => {
-
-    return (
-        <Box sx={{ borderBottom: 1, borderColor: 'divider', display: 'flex' }}>
-            <TabList onChange={handleChange} aria-label="lab API tabs example">
-                <Tab label="Board View" value="1" />
-                <Tab label="Table" value="2" />
-            </TabList>
-            <div className="flex items-center">
-                +
-            </div>
-        </Box>
-    )
+interface HeaderTabsProps {
+	value: number;
+	onChange: (event: React.SyntheticEvent, newValue: number) => void;
 }
 
+const HeaderTabs: React.FC<HeaderTabsProps> = ({ value, onChange }) => {
+	return (
+		<div>
+			<Tabs value={value} onChange={onChange} aria-label='basic tabs example'>
+				<Tab label='Item One' />
+				<Tab label='Item Two' />
+				<Tab label='Item Three' />
+			</Tabs>
+		</div>
+	);
+};
 
-export default HeaderListTask
+export default HeaderTabs;

@@ -1,14 +1,13 @@
 import { FC } from 'react';
-import Todos from '../../components/Todos/Index';
+import Todos from '../../components/Todos/Totos';
 
 const IndexTodoPage: FC = () => {
+	return (
+		<div>
+			{/* <Card /> */}
+			<Todos />
+		</div>
+	);
+};
 
-    return (
-        <>
-            {/* <Card /> */}
-            <Todos />
-        </>
-    )
-}
-
-export default IndexTodoPage
+export default IndexTodoPage;
