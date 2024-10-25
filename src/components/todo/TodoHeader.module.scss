@@ -29,19 +29,10 @@
     right: -50%;
     transition: right 0.3s ease;
     padding: 20px;
+    z-index: 10;
 }
 
 .navbar.active {
     right: 0;
 }
 
-.toggleBtn {
-    // position: absolute;
-    // top: 20px;
-    // left: 20px;
-    // padding: 10px 20px;
-    // background-color: #007bff;
-    // color: white;
-    // border: none;
-    // cursor: pointer;
-}

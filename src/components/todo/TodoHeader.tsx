@@ -1,13 +1,28 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState, useRef } from "react";
 import classes from './TodoHeader.module.scss';
 
 const TodoHeader: FC = () => {
     const [isActive, setIsActive] = useState(false);
+    const navbarRef = useRef<HTMLDivElement>(null);;
+
 
     const toggleNavbar = () => {
-        setIsActive(!isActive);
+        setIsActive((prev) => !prev);
     };
 
+    const handleClickOutside = (event: MouseEvent) => {
+        if (navbarRef.current && !navbarRef.current.contains(event.target as Node)) {
+            setIsActive(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
     return (
         <div>
@@ -24,16 +39,19 @@ const TodoHeader: FC = () => {
                 <button className={`${classes.toggleBtn}`} onClick={toggleNavbar}>
                     {'+'}
                 </button>
-                <div className={`${classes.navbar} ${isActive ? `${classes.active}` : ''}`}>
-                    <div className="flex justify-start" >
-                        <button onClick={toggleNavbar}>{'back'} </button>
+                <div
+                    ref={navbarRef}
+                    className={`${classes.navbar} ${isActive ? classes.active : ''}`}
+                >
+                    <div className="flex justify-start">
+                        <button onClick={toggleNavbar}>{'back'}</button>
                     </div>
-                    <div className="bg-red-200 h-full">
+                    <div className="h-full">
                         c
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
