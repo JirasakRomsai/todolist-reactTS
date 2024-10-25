@@ -1,14 +1,11 @@
 import { FC } from 'react';
 import './App.scss';
-import Todo from './pages/Todo/Index';
+import Todo from './pages/todo/TodoPage';
 
 const App: FC = () => {
 	return (
-		<div className=''>
+		<div>
 			<Todo />
-			{/* <div className="flex items-center justify-center h-screen bg-gray-100">
-        <h1 className="text-4xl font-bold text-blue-500">Hello, Tailwind!</h1>
-      </div> */}
 		</div>
 	);
 };
