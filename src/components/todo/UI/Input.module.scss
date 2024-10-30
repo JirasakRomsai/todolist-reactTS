@@ -1,0 +1,21 @@
+.input {
+	min-height: 3rem; // ตั้งค่าความสูงขั้นต่ำ
+	width: 100%;
+	color: #d5d5d5;
+	border: none;
+	outline: none;
+	background: transparent;
+	caret-color: white;
+	font-size: 2rem; // ปรับขนาด font ทำให้ cursor ใหญ่ขึ้น
+	resize: none;
+	overflow: hidden;
+
+	&::placeholder {
+		color: #373737;
+		font-size: 2rem;
+	}
+
+	&:focus {
+		outline: none;
+	}
+}

@@ -1,58 +1,47 @@
-import { FC, useEffect, useState, useRef } from "react";
+import { FC, useState } from 'react';
 import classes from './TodoHeader.module.scss';
+import TodoModify from './TodoModify';
+import { useAppSelector } from '../../store/hooks';
+import { selectComplete } from '../../store/todo/selector';
 
 const TodoHeader: FC = () => {
-    const [isActive, setIsActive] = useState(false);
-    const navbarRef = useRef<HTMLDivElement>(null);;
+	const [isActive, setIsActive] = useState(false);
+	const complete = useAppSelector(selectComplete);
 
+	const toggleNavbar = () => {
+		setIsActive((prev) => !prev);
+	};
 
-    const toggleNavbar = () => {
-        setIsActive((prev) => !prev);
-    };
+	const closeNavbar = () => {
+		setIsActive(false);
+	};
 
-    const handleClickOutside = (event: MouseEvent) => {
-        if (navbarRef.current && !navbarRef.current.contains(event.target as Node)) {
-            setIsActive(false);
-        }
-    };
+	let classProgress = '';
+	if (complete.complete < complete.count && complete.complete > 0) {
+		classProgress = classes.inProgress;
+	} else if (complete.complete === complete.count) {
+		classProgress = classes.success;
+	}
 
-    useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
+	return (
+		<div>
+			<div className={`${classes.summary} flex justify-center`}>
+				<div className='flex flex-col justify-center pr-12'>
+					<p> Take done</p>
+					<p>Keep it up</p>
+				</div>
+				<div className={`${classes.circle} ${classProgress} flex`}>
+					{complete.complete}/{complete.count}
+				</div>
+			</div>
+			<div className='flex justify-end'>
+				<button className={`${classes.toggleBtn}`} onClick={toggleNavbar}>
+					{'+'}
+				</button>
+				{isActive && <TodoModify isActive={isActive} onClose={closeNavbar} />}
+			</div>
+		</div>
+	);
+};
 
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
-
-    return (
-        <div>
-            <div className={`${classes.summary} flex justify-center`}>
-                <div className="flex flex-col justify-center pr-12">
-                    <p> Take done</p>
-                    <p>Keep it up</p>
-                </div>
-                <div className={`${classes.circle}  flex`}>
-                    2/3
-                </div>
-            </div>
-            <div className="flex justify-end">
-                <button className={`${classes.toggleBtn}`} onClick={toggleNavbar}>
-                    {'+'}
-                </button>
-                <div
-                    ref={navbarRef}
-                    className={`${classes.navbar} ${isActive ? classes.active : ''}`}
-                >
-                    <div className="flex justify-start">
-                        <button onClick={toggleNavbar}>{'back'}</button>
-                    </div>
-                    <div className="h-full">
-                        c
-                    </div>
-                </div>
-            </div>
-        </div >
-    )
-}
-
-export default TodoHeader
+export default TodoHeader;

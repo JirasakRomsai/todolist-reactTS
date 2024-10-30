@@ -1,61 +1,26 @@
-import { FC, useState } from "react";
-import { FormControlLabel, FormControl, Radio, IconButton } from '@mui/material';
-import classes from './ToDolist.module.scss';
-
+import { FC } from 'react';
+import TodoItem from './TodoItem';
+import {useAppSelector } from '../../store/hooks';
 
 const ToDolist: FC = () => {
-    const [checked, setChecked] = useState<boolean>(false);
+	const todoItems = useAppSelector((state) => state.todo.items);
+	const hasTodo = todoItems && todoItems.length > 0;
 
-    function handleChecked() {
-        setChecked(prev => !prev)
-    }
+	if (!hasTodo) {
 
-    return (
-        /*  <div className="flex flex-col">
-             <div className={`${classes.task} flex justify-between items-center`}>
-                 <div className={`${classes.checked} ${checked && classes.active}`} onClick={handleChecked} />
-                 <div>
-                     dfd
-                 </div>
-                 <div>
-                     <button className="ml-3">edit</button>
-                     <button className="ml-3">delete</button>
-                 </div>
-             </div>
-         </div > */
+		return <div className='grid gap-4'>Loading...</div>;
 
-        <div className="grid gap-4">
-            <div className="flex flex-col">
-                <div className={`${classes.task} flex justify-between items-center`}>
-                    <div className="flex">
-                        <div className={`${classes.checked} ${checked && classes.active}`} onClick={handleChecked} />
-                        <div className="ml-5">
-                            Task1
-                        </div>
-                    </div>
-                    <div>
-                        <button className="ml-3">edit</button>
-                        <button className="ml-3">delete</button>
-                    </div>
-                </div>
-            </div >
-            <div className="flex flex-col">
-                <div className={`${classes.task} flex justify-between items-center`}>
-                    <div className="flex">
-                        <div className={`${classes.checked} ${checked && classes.active}`} onClick={handleChecked} />
-                        <div className="ml-5">
-                            Task1
-                        </div>
-                    </div>
-                    <div>
-                        <button className="ml-3">edit</button>
-                        <button className="ml-3">delete</button>
-                    </div>
-                </div>
-            </div >
-        </div>
-    )
-}
+	} else {
 
+		return (
+			<div className='grid gap-4'>
+				{todoItems.map((item) => (
+					<TodoItem key={item.id} itemId={item.id} />
+				))}
+			</div>
+		);
+    
+	}
+};
 
-export default ToDolist
+export default ToDolist;

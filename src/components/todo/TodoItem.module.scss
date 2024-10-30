@@ -1,0 +1,31 @@
+.item {
+	color: white;
+	background-color: black;
+	border: 1.5px solid whitesmoke;
+	height: 2.5rem;
+	padding: 0 1rem 0 1rem;
+}
+.checked {
+	height: 1.5rem;
+	width: 1.5rem;
+	background-color: black;
+	border-radius: 50%;
+	display: inline-block;
+	display: flex;
+	cursor: pointer;
+	border: 1.5px solid rgb(7, 174, 7);
+}
+
+.active {
+	background-color: green;
+	border: none;
+}
+
+.title {
+	width: 60rem;
+	margin-left: 1rem;
+	text-align: left;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

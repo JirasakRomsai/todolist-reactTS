@@ -1,38 +1,47 @@
 .summary {
-    width: auto;
-    border: 1.5px solid white;
-    border-radius: 5px;
-    padding: 1rem 0 1rem 0;
+	width: auto;
+	border: 1.5px solid white;
+	border-radius: 5px;
+	padding: 1rem 0 1rem 0;
 }
 
 .circle {
-    height: 5.5rem;
-    width: 5.5rem;
-    background-color: green;
-    color: black;
-    font-size: 2rem;
-    border-radius: 50%;
-    display: inline-block;
-    display: flex;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	height: 5.5rem;
+	width: 5.5rem;
+	background-color: #1d4ed8;
+	color: white;
+	font-size: 2rem;
+	border-radius: 50%;
+	display: inline-block;
+	display: flex;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .navbar {
-    width: 50%;
-    height: 100%;
-    background-color: #333;
-    color: white;
-    position: fixed;
-    top: 0;
-    right: -50%;
-    transition: right 0.3s ease;
-    padding: 20px;
-    z-index: 10;
+	width: 50%;
+	height: 100%;
+	background-color: #333;
+	color: white;
+	position: fixed;
+	top: 0;
+	right: -50%;
+	transition: right 0.3s ease;
+	padding: 20px;
+	z-index: 10;
 }
 
 .navbar.active {
-    right: 0;
+	right: 0;
 }
 
+.success {
+	background-color: #84cc16;
+	color: white;
+}
+
+.inProgress {
+	background-color: #fbbf24;
+	color: black;
+}

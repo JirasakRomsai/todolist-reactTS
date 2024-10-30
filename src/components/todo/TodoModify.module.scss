@@ -1,0 +1,45 @@
+.navbar {
+	width: 50%;
+	height: 100%;
+	background-color: #202020;
+	color: white;
+	position: fixed;
+	top: 0;
+	right: -50%;
+	transition: right 0.3s ease;
+	padding: 20px;
+	z-index: 10;
+}
+
+.navbar.active {
+	right: 0;
+}
+
+.content {
+	overflow-y: auto;
+	height: 100%;
+	padding: 2.5rem 3rem 2.5rem 3rem;
+	margin-top: 1rem;
+
+	&::-webkit-scrollbar {
+		width: 10px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: #202020;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: #4d4d4d;
+		border-radius: 2rem;
+		// border: 2px solid #f1f1f1;
+	}
+
+	&::-webkit-scrollbar-thumb:hover {
+		background: #555;
+	}
+
+	.textDate {
+		color: #717171;
+	}
+}
