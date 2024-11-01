@@ -1,17 +1,16 @@
 import { FC } from 'react';
 import TodoItem from './TodoItem';
-import {useAppSelector } from '../../store/hooks';
+import { useAppSelector } from '../../store/hooks';
 
 const ToDolist: FC = () => {
 	const todoItems = useAppSelector((state) => state.todo.items);
 	const hasTodo = todoItems && todoItems.length > 0;
 
-	if (!hasTodo) {
-
+	if (todoItems.length == 0) {
+		return <div className='grid gap-4'>No item.</div>;
+	} else if (!hasTodo) {
 		return <div className='grid gap-4'>Loading...</div>;
-
 	} else {
-
 		return (
 			<div className='grid gap-4'>
 				{todoItems.map((item) => (
@@ -19,7 +18,6 @@ const ToDolist: FC = () => {
 				))}
 			</div>
 		);
-    
 	}
 };
 

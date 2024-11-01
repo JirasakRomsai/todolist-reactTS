@@ -4,6 +4,7 @@ import TodoModify from './TodoModify';
 import { selectTodoById } from '../../store/todo/selector';
 import { useAppSelector, useAppDispatch } from '../../store/hooks.ts';
 import { todoAction } from '../../store/todo/slice.ts';
+import { MdModeEditOutline, MdDelete } from 'react-icons/md';
 
 interface TodoItemProps {
 	itemId: string;
@@ -46,20 +47,18 @@ const TodoItem: FC<TodoItemProps> = ({ itemId }) => {
 
 	return (
 		<>
-			<div className='flex flex-col'>
-				<div className={`${classes.item} flex justify-between items-center`}>
-					<div className='flex'>
-						<div className={`${classes.checked} ${checked && classes.active}`} onClick={handleChecked} />
-						<div className={`${classes.title}`}>{todoItem?.title}</div>
-					</div>
-					<div>
-						<button className='ml-3' onClick={toggleNavbar}>
-							edit
-						</button>
-						<button className='ml-3' onClick={handlerDelete}>
-							delete
-						</button>
-					</div>
+			<div className={`${classes.item} flex justify-between items-center`}>
+				<div className='flex'>
+					<div className={`${classes.checked} ${checked && classes.active}`} onClick={handleChecked} />
+					<div className={`${classes.title}`}>{todoItem?.title}</div>
+				</div>
+				<div>
+					<button className='ml-3' onClick={toggleNavbar}>
+						<MdModeEditOutline />
+					</button>
+					<button className='ml-3' onClick={handlerDelete}>
+						<MdDelete />
+					</button>
 				</div>
 			</div>
 			{isActive && <TodoModify isActive={isActive} onClose={closeNavbar} editedId={itemId} />}

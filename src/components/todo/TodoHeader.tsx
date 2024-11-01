@@ -3,6 +3,7 @@ import classes from './TodoHeader.module.scss';
 import TodoModify from './TodoModify';
 import { useAppSelector } from '../../store/hooks';
 import { selectComplete } from '../../store/todo/selector';
+import { IoAddCircleSharp } from 'react-icons/io5';
 
 const TodoHeader: FC = () => {
 	const [isActive, setIsActive] = useState(false);
@@ -17,10 +18,12 @@ const TodoHeader: FC = () => {
 	};
 
 	let classProgress = '';
-	if (complete.complete < complete.count && complete.complete > 0) {
-		classProgress = classes.inProgress;
-	} else if (complete.complete === complete.count) {
-		classProgress = classes.success;
+	if (complete.count > 0 && complete.complete > 0) {
+		if (complete.complete < complete.count) {
+			classProgress = classes.inProgress;
+		} else if (complete.complete === complete.count) {
+			classProgress = classes.success;
+		}
 	}
 
 	return (
@@ -34,9 +37,9 @@ const TodoHeader: FC = () => {
 					{complete.complete}/{complete.count}
 				</div>
 			</div>
-			<div className='flex justify-end'>
+			<div className='flex justify-end mt-3 mb-3'>
 				<button className={`${classes.toggleBtn}`} onClick={toggleNavbar}>
-					{'+'}
+					<IoAddCircleSharp color='white' size={25} />
 				</button>
 				{isActive && <TodoModify isActive={isActive} onClose={closeNavbar} />}
 			</div>
